@@ -35,4 +35,34 @@ It lets people publish availability, set a price for their attention, and rely o
 
 ChronoLock is about making the meetings **deliberate and accountable**.
 
+## Demo: advertise availability + tiers
+
+This repo includes a small FastAPI demo that publishes availability and the tiered offerings
+outlined in `ILLUSTRATION.md`. It does **not** integrate with Google Calendar yet; instead it
+returns sample availability and a placeholder x402 payment request to show the shape of the
+workflow.
+
+### Run the demo
+
+```bash
+uvicorn chronolock.app:app --reload --port 8000
+```
+
+### Key endpoints
+
+```bash
+# List tiers (Bronze/Silver/Gold)
+curl http://localhost:8000/tiers
+
+# List advertised availability slots
+curl http://localhost:8000/availability
+
+# Place a hold for a tier + slot (returns x402-style payment info)
+curl -X POST http://localhost:8000/holds \
+  -H "Content-Type: application/json" \
+  -d '{"tier_id":"silver","slot_id":"slot-1"}'
+
+# Confirm a hold (simulates payment confirmation -> booked event)
+curl -X POST http://localhost:8000/holds/<hold_id>/confirm
+```
 
