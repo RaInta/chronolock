@@ -80,11 +80,12 @@ def load_credentials(token_path: Path) -> Credentials:
 
 def prompt_meeting_request() -> MeetingRequest:
     """Prompt user for meeting details."""
+    tomorrow = datetime.now(tz=tz.tzlocal()) + timedelta(days=1)
     summary = input("Meeting name: ").strip()
     if not summary:
         raise RuntimeError("Meeting name is required.")
 
-    starts_at_raw = input("When should the meeting start? (e.g. 2025-01-31 14:00) ").strip()
+    starts_at_raw = input(f"When should the meeting start? (e.g. {tomorrow.strftime('%Y-%m-%d %H:%M')}) ").strip()
     if not starts_at_raw:
         raise RuntimeError("Start time is required.")
 
