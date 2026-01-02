@@ -49,7 +49,14 @@ def _load_client_config() -> dict:
 def _load_credentials(token_path: Path) -> Credentials:
     credentials = None
     if token_path.exists():
-        credentials = Credentials.from_authorized_user_file(token_path, SCOPES)
+        try:
+            credentials = Credentials.from_authorized_user_file(token_path, SCOPES)
+        except ValueError as e:
+            # Token file exists but is invalid - likely a client secrets file, not a token
+            print(f"Warning: Token file exists but is invalid: {e}")
+            print("This may be a client secrets file instead of an authorized token.")
+            print("Proceeding with OAuth flow to generate a proper token...")
+            credentials = None
 
     if credentials and credentials.expired and credentials.refresh_token:
         credentials.refresh(Request())
