@@ -25,3 +25,14 @@ Instead, paid access to attention, expertise, or presence at a fair market rate.
 
 ChronoLock is intended as infrastructure, not a platform.
 
+## Why ChronoLock exists
+
+Time is the scarcest resource in modern knowledge work, yet it’s still exchanged informally, inefficiently, and without clear boundaries.
+
+ChronoLock exists to make **access to time explicit and valued fairly**.
+
+It lets people publish availability, set a price for their attention, and rely on a formal agreement to enforce fairness, commitment, and respect. Payment becomes the signal of intent.
+
+ChronoLock is about making the meetings **deliberate and accountable**.
+
+

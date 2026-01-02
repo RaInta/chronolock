@@ -1,0 +1,44 @@
+[project]
+name = "chronolock"
+version = "0.1.0"
+description = "Lock in time. Unlock expertise on an expert's calendar, using the x402 protocol."
+authors = [{ name = "Ra Inta", email = "raro77@gmail.com" }]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "cdp-sdk>=1.33.3",
+    "fastapi",
+    "fastmcp>=2.14.2",
+    "google-api-python-client>=2.187.0",
+    "google-auth>=2.45.0",
+    "google-auth-httplib2>=0.3.0",
+    "google-auth-oauthlib>=1.2.2",
+    "langchain",
+    "langgraph",
+    "pydantic>=2.0",
+    "pydantic-settings>=0.1",
+    "python-dateutil>=2.9.0",
+    "requests",
+    "uvicorn[standard]",
+    "x402>=0.2.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["x402*"]
+
+[project.optional-dependencies]
+agent = [
+    "python-dotenv",
+]
+
+dev = [
+    "pytest",
+    "python-dotenv",
+]
+
+
+
+[tool.black]
+line-length = 100
+
