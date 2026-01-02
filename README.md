@@ -66,3 +66,34 @@ curl -X POST http://localhost:8000/holds \
 curl -X POST http://localhost:8000/holds/<hold_id>/confirm
 ```
 
+## Demo: Google Calendar booking (read + write)
+
+This interactive script uses the Google Calendar API with read/write scope to list upcoming
+events, create a meeting, and optionally delete it at the end. Credentials are supplied via
+environment variables or a hidden prompt.
+
+### Prerequisites
+
+1. Create an OAuth client in the Google Cloud console (Desktop app).
+2. Download the client secrets JSON.
+
+### Run the demo
+
+```bash
+export CHRONOLOCK_GOOGLE_CLIENT_SECRETS_PATH="/path/to/client_secret.json"
+python -m chronolock.demos.google_calendar_demo
+```
+
+You can also supply the JSON directly (hidden input):
+
+```bash
+export CHRONOLOCK_GOOGLE_CLIENT_SECRETS_JSON='{"installed":{...}}'
+python -m chronolock.demos.google_calendar_demo
+```
+
+The script will prompt for:
+- Meeting name
+- Start time (e.g. `2025-01-31 14:00`)
+- Duration in minutes
+
+It will create the event and ask if you want to delete it before exiting.
